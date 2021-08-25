@@ -46,7 +46,7 @@ module.exports = {
             tournament.statusCode = event.status.type.name;
             tournament.status = event.competitions[0].status.type.detail;
             tournament.purse = event.displayPurse;
-            tournament.defendingChamp = event.defendingChampion.athlete.displayName;
+            tournament.defendingChamp = event.defendingChampion ? event.defendingChampion.athlete.displayName : ""
             tournament.currentRound = this.getCurrentRound(event);
             tournament.playoff = false;
 
@@ -109,7 +109,7 @@ module.exports = {
 
                 tournaments = [];
 
-                for (i=0;i<ESPNObj.length;i++)
+                 for (i=0;i<ESPNObj.length;i++){
                     var tournament = ESPNObj[i];
                     tournaments.push({
                         "name"           : tournament.name,
